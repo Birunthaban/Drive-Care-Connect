@@ -1,10 +1,11 @@
 <%@include file="structure.jsp"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.text.SimpleDateFormat" %>
+<%@page import="com.services.database.*" %>
 
 <% String username = (String) request.getSession().getAttribute("username"); %>
 <%
-if (request.getParameter("reservation") != null) {
+if (request.getParameter("submit") != null) {
 	// Get form data
 	String dateString = request.getParameter("date");
 	String timeString = request.getParameter("preferred-time");
@@ -28,7 +29,7 @@ if (request.getParameter("reservation") != null) {
 	    java.sql.Time sqlTime = new java.sql.Time(parsedTime.getTime());
 
 	    // Perform database insertion
-	   
+	    Connection connection = DatabaseConnection.getConnection();
 	    PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO vehicle_service (date, time, location, vehicle_no, mileage, message, username) VALUES (?, ?, ?, ?, ?, ?, ?)");
 	    
 	    // Set parameters for the prepared statement
@@ -57,7 +58,7 @@ if (request.getParameter("reservation") != null) {
 	} catch (Exception e) {
 	    e.printStackTrace();
 	    // Redirect to an error page
-	    response.sendRedirect("add-reservation.jsp?msg=exception");
+	    response.sendRedirect("service_registration.jsp?msg=exception");
 	}
 	}
 
@@ -73,7 +74,7 @@ if (request.getParameter("reservation") != null) {
 
 
 	           <h2>Vehicle Service Reservation</h2>
-    <form id="reservation-form">
+    <form id="reservation-form" method="post" action="">
     
      <input type="hidden" id="username" name="username" value="<%= username %>">
        
@@ -83,9 +84,9 @@ if (request.getParameter("reservation") != null) {
 
         <label for="preferred-time">Preferred Time:</label>
         <select id="preferred-time" name="preferred-time">
-            <option value="10:00">10 AM</option>
-            <option value="11:00">11 AM</option>
-            <option value="12:00">12 PM</option>
+            <option value="10:00:00">10 AM</option>
+            <option value="11:00:00">11 AM</option>
+            <option value="12:00:00">12 PM</option>
         </select>
 
         <label for="preferred-location">Preferred Location:</label>
