@@ -35,12 +35,7 @@
           </a>
     
     
-        <a class="btn bg-gradient-primary mt-4 w-100" href="https://api.asgardeo.io/t/birunthaban/oidc/logout" type="button">
-          Log out
-         
-        </a>
-    
-
+        <a href="https://api.asgardeo.io/t/birunthaban/oidc/logout" type="button">Logout</a>
   
 </body>
 

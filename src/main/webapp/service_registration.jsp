@@ -1,67 +1,67 @@
 <%@include file="structure.jsp"%>
- <%@page import="java.sql.*"%>
-<%@page import="java.text.SimpleDateFormat" %>
-<%@page import="com.services.database.*" %>
+<%@page import="java.sql.*"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.services.database.DatabaseConnection"%>
 
-<% String username = (String) request.getSession().getAttribute("username"); %>
 <%
+String username = (String) request.getSession().getAttribute("username");
+
 if (request.getParameter("submit") != null) {
-	// Get form data
-	String dateString = request.getParameter("date");
-	String timeString = request.getParameter("preferred-time");
-	String location = request.getParameter("preferred-location");
-	String mileageStr = request.getParameter("current-mileage");
-	String userName = request.getParameter("username");
-	String vehicleNo = request.getParameter("vehicle-registration");
-	String message = request.getParameter("message");
-	
-	try{
-		 // Convert String date to java.sql.Date
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	    java.util.Date parsedDate = dateFormat.parse(dateString);
-	    java.sql.Date sqlDate = new java.sql.Date(parsedDate.getTime());
+    // Get form data
+    String dateString = request.getParameter("date");
+    String timeString = request.getParameter("preferred-time");
+    String location = request.getParameter("preferred-location");
+    String mileageStr = request.getParameter("current-mileage");
+    String vehicleNo = request.getParameter("vehicle-registration");
+    String message = request.getParameter("message");
 
-	    // Convert String mileage to Integer
-	    int mileage = Integer.parseInt(mileageStr);
-	    // Convert String time to java.sql.Time
-	    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-	    java.util.Date parsedTime = timeFormat.parse(timeString);
-	    java.sql.Time sqlTime = new java.sql.Time(parsedTime.getTime());
+    try {
+        // Convert String date to java.sql.Date
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date parsedDate = dateFormat.parse(dateString);
+        java.sql.Date sqlDate = new java.sql.Date(parsedDate.getTime());
 
-	    // Perform database insertion
-	    Connection connection = DatabaseConnection.getConnection();
-	    PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO vehicle_service (date, time, location, vehicle_no, mileage, message, username) VALUES (?, ?, ?, ?, ?, ?, ?)");
-	    
-	    // Set parameters for the prepared statement
-	    preparedStatement.setDate(1, sqlDate);
-	    preparedStatement.setTime(2, sqlTime);
-	    preparedStatement.setString(3, location);
-	    preparedStatement.setString(4, vehicleNo);
-	    preparedStatement.setInt(5, mileage);
-	    preparedStatement.setString(6, message);
-	    preparedStatement.setString(7, username);
+        // Convert String mileage to Integer
+        int mileage = Integer.parseInt(mileageStr);
 
-	    // Execute the SQL query
-	    int rowsAffected = preparedStatement.executeUpdate();
+        // Convert String time to java.sql.Time
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+        java.util.Date parsedTime = timeFormat.parse(timeString);
+        java.sql.Time sqlTime = new java.sql.Time(parsedTime.getTime());
 
-	    if (rowsAffected > 0) {
-	        // Redirect to a success page or perform any other necessary action
-	        response.sendRedirect("service_registration.jsp?msg=success");
-	    } else {
-	        // Redirect to an error page
-	        response.sendRedirect("service_registration.jsp?msg=failure");
-	    }
+        // Perform database insertion
+        
+        	DatabaseConnection dbConnection = new DatabaseConnection();
+             Connection connection = dbConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO vehicle_service (date, time, location, vehicle_no, mileage, message, username) VALUES (?, ?, ?, ?, ?, ?, ?)");
+             
 
-	    // Close the resources
-	    preparedStatement.close();
-	    connection.close();
-	} catch (Exception e) {
-	    e.printStackTrace();
-	    // Redirect to an error page
-	    response.sendRedirect("service_registration.jsp?msg=exception");
-	}
-	}
+            // Set parameters for the prepared statement
+            preparedStatement.setDate(1, sqlDate);
+            preparedStatement.setTime(2, sqlTime);
+            preparedStatement.setString(3, location);
+            preparedStatement.setString(4, vehicleNo);
+            preparedStatement.setInt(5, mileage);
+            preparedStatement.setString(6, message);
+            preparedStatement.setString(7, username);
 
+            // Execute the SQL query
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // Redirect to a success page or perform any other necessary action
+                response.sendRedirect("service_registration.jsp?msg=success");
+            } else {
+                // Redirect to an error page
+                response.sendRedirect("service_registration.jsp?msg=failure");
+            }
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+        // Redirect to an error page
+        response.sendRedirect("service_registration.jsp?msg=exception");
+    }
+}
 %>
 
 <!doctype>
