@@ -9,8 +9,13 @@
     // Check if the access token is not null or empty
     if (accessToken != null && !accessToken.isEmpty()) {
         // Define userinfo endpoint
-        String userinfoEndpoint = "https://api.asgardeo.io/t/birunthaban/oauth2/userinfo";
-        String introspectionEndpoint ="https://api.asgardeo.io/t/birunthaban/oauth2/introspect";
+        // Read properties from the authorization.properties file
+Properties props = new Properties();
+InputStream input = getServletContext().getResourceAsStream("/WEB-INF/authorization.properties");
+props.load(input);
+
+String userinfoEndpoint = props.getProperty("oauth.userinfo_endpoint");
+String introspectionEndpoint = props.getProperty("oauth.introspection_endpoint");
 
 
         try {

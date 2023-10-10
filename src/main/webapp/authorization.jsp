@@ -11,11 +11,14 @@ if (authorizationCode == null || authorizationCode.isEmpty()) {
     out.println("Authorization code is missing.");
 } else {
     // Define token endpoint and client credentials
-    String tokenEndpoint = "https://api.asgardeo.io/t/birunthaban/oauth2/token";
-    String clientId = "Yb0SLskZKAQHsgNs2ffFQ84evf0a";
-    String clientSecret = "5hhrnl9tOTKcNVnRPJ8_uUmwHW08Uf9CRydZpA6ra7Ua";
-    String redirectUri = "http://localhost:8082/Drive_Care_Connect/authorization.jsp";
+    Properties props = new Properties();
+    InputStream input = getServletContext().getResourceAsStream("/WEB-INF/authorization.properties");
+    props.load(input);
 
+    String clientId = props.getProperty("oauth.client_id");
+    String clientSecret = props.getProperty("oauth.client_secret");
+    String tokenEndpoint = props.getProperty("oauth.token_endpoint");
+    String redirectUri = props.getProperty("oauth.redirect_uri");
     try {
         // Construct the request data for token exchange
         String requestData = "code=" + authorizationCode +

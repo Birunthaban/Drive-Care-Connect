@@ -1,3 +1,12 @@
+<%@ page import="java.io.*, java.util.*" %>
+
+<%
+Properties props = new Properties();
+InputStream input = getServletContext().getResourceAsStream("/WEB-INF/authorization.properties");
+props.load(input);
+%>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -73,7 +82,7 @@
             </div>
             <form class="login-form">
                 <button>
-                    <a href="https://api.asgardeo.io/t/birunthaban/oauth2/authorize?scope=openid address email phone profile&response_type=code&redirect_uri=http://localhost:8082/Drive_Care_Connect/authorization.jsp&client_id=Yb0SLskZKAQHsgNs2ffFQ84evf0a">
+                    <a href="<%= props.getProperty("oauth.auth_endpoint") %>?scope=<%= props.getProperty("oauth.scope") %>&response_type=<%= props.getProperty("oauth.response_type") %>&redirect_uri=<%= props.getProperty("oauth.redirect_uri") %>&client_id=<%= props.getProperty("oauth.client_id") %>">
                         Login
                     </a>
                 </button>
