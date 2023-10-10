@@ -71,7 +71,7 @@
                     <p>Please click the button to log in.</p>
                 </div>
             </div>
-            <form class="login-form" action="loginAction.jsp">
+            <form class="login-form">
                 <button>
                     <a href="https://api.asgardeo.io/t/birunthaban/oauth2/authorize?scope=openid address email phone profile&response_type=code&redirect_uri=http://localhost:8082/Drive_Care_Connect/authorization.jsp&client_id=Yb0SLskZKAQHsgNs2ffFQ84evf0a">
                         Login

@@ -1,4 +1,4 @@
-
+<%@include file="structure.jsp"%>
 <%@ page import="java.io.*, java.net.*, java.util.*" %>
 <%@ page import="org.json.JSONObject" %>
 <%
@@ -52,8 +52,8 @@
 
                 // Extract the "country" property from the "address" object
                 String country = (addressObject != null) ? addressObject.optString("country") : "";
-
-                // Display user information
+                
+                session.setAttribute("username", username);
 %>
 
 
