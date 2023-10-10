@@ -2,14 +2,16 @@
 <%@page import="java.sql.*"%>
 <%@include file="structure.jsp"%>
 
-<% String username = (String) request.getSession().getAttribute("username"); %>
+
         			<h4>All Reservations</h4>
         	
         		
         			<%
 						try {
 							Connection connection =DatabaseConnection.getConnection();
-							PreparedStatement ps = connection.prepareStatement("select * from vehicle_service where username='birunth-se19006@stu.kln.ac.lk'");
+							PreparedStatement ps = connection.prepareStatement("select * from vehicle_service where username=?");
+							 String username = (String) request.getSession().getAttribute("username"); 
+							ps.setString(1,username);
 							ResultSet rs = ps.executeQuery();
 
 							if (rs.next()) {

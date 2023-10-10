@@ -24,7 +24,7 @@
             <span class="nav-link-text ms-1">Add Reservation</span>
           </a>
        
-          <a class="nav-link text-white " href="delete-upcoming-reservation.jsp">
+          <a class="nav-link text-white " href="delete_registration.jsp">
             
             <span class="nav-link-text ms-1">Upcoming Reservations</span>
           </a>
