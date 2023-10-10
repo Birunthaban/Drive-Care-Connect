@@ -29,7 +29,7 @@
             <span class="nav-link-text ms-1">Upcoming Reservations</span>
           </a>
         
-          <a class="nav-link text-white " href="view-all-reservations.jsp">
+          <a class="nav-link text-white " href="view_registration.jsp">
             
             <span class="nav-link-text ms-1">View All</span>
           </a>
