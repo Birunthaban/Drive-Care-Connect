@@ -60,35 +60,99 @@ String introspectionEndpoint = props.getProperty("oauth.introspection_endpoint")
                 
                 session.setAttribute("username", username);
 %>
+<!doctype>
+<html>
+<head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
 
+    h3 {
+        color: #007BFF;
+        text-align: center;
+    }
 
-        	<h3>Profile</h3>
-        	<br>
-        	<br>
-        	
-						      <p class="text-sm mb-0 text-capitalize">USERNAME</p>
-						      <h4 class="mb-0"><%= username %></h4>
-					
-		
-		        	
-						      <p class="text-sm mb-0 text-capitalize">NAME</p>
-						      <h4 class="mb-0"><%= name %></h4>
-					
-				
-					    	
-						      <p class="text-sm mb-0 text-capitalize">EMAIL</p>
-						      <h4 class="mb-0"><%= email %></h4>
-						   
+    .profile-info {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+         margin: 50px auto; 
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .text-capitalize {
+        text-transform: capitalize;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .mb-0 {
+        margin-bottom: 10px;
+    }
+
+    h4 {
+        font-size: 16px;
+        color: #333;
+    }
+     .info-pair {
+        margin: 10px 0;
+    }
+
+    .info-label {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 16px;
+        color: #007BFF;
+    }
+
+    .info-value {
+        font-size: 16px;
+        color: #333;
+    }
+</style>
+
+</head>
+<body>
+<div class="profile-info">
+    <h2>Profile</h2>
+
+    <div class="info-pair">
+        <p class="info-label">USERNAME</p>
+        <h4 class="info-value"><%= username %></h4>
+    </div>
+
+    <div class="info-pair">
+        <p class="info-label">NAME</p>
+        <h4 class="info-value"><%= name %></h4>
+    </div>
+
+    <div class="info-pair">
+        <p class="info-label">EMAIL</p>
+        <h4 class="info-value"><%= email %></h4>
+    </div>
+
+    <div class="info-pair">
+        <p class="info-label">CONTACT NO</p>
+        <h4 class="info-value"><%= contactNumber %></h4>
+    </div>
+
+    <div class="info-pair">
+        <p class="info-label">COUNTRY</p>
+        <h4 class="info-value"><%= country %></h4>
+    </div>
+</div>
 			
-			       
-						      <p class="text-sm mb-0 text-capitalize">CONTACT NO</p>
-						      <h4 class="mb-0"><%= contactNumber %></h4>
-					
-					
-							
-						      <p class="text-sm mb-0 text-capitalize">COUNTRY</p>
-						      <h4 class="mb-0"><%= country %></h4>
-					
+</body>
+</html>
+
+
 				
 
     
@@ -100,6 +164,6 @@ String introspectionEndpoint = props.getProperty("oauth.introspection_endpoint")
         }
     } else {
         // Handle the case where the access token is not present
-        out.println("Access token is missing.");
+         response.sendRedirect("index.jsp");
     }
 %>

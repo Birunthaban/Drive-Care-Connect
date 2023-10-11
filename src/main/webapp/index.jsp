@@ -9,39 +9,43 @@ props.load(input);
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
-
-        .login-page {
+            background-color: #f0f0f0;
+            margin: 0;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             height: 100vh;
         }
 
         .form {
-            background-color: #fff;
+            background-color: #ffffff;
             padding: 20px;
             border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
         }
 
         .login-header {
             text-align: center;
-            margin-bottom: 20px;
         }
 
         .login-header h3 {
-            color: #333;
+            color: #007BFF;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .login-header p {
+            color: #777;
         }
 
         .login-form {
-            text-align: center; /* Center the button horizontally */
+            text-align: center;
         }
 
         .login-form button {
@@ -51,6 +55,7 @@ props.load(input);
             padding: 10px 20px;
             border-radius: 3px;
             cursor: pointer;
+            font-size: 16px;
         }
 
         .login-form button a {
@@ -67,9 +72,16 @@ props.load(input);
             margin-top: 10px;
             color: #777;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form {
+                margin: 10px;
+            }
+        }
     </style>
-    <title>Vehicle Service Reservation App</title>
 </head>
+
 
 <body>
     <div class="login-page">
