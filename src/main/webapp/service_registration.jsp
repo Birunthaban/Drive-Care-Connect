@@ -1,3 +1,10 @@
+<%@ page import="com.services.authentication.AuthenticationUtil" %>
+<%
+if (!AuthenticationUtil.isAuthenticated(request)) {
+    // If the user is not authenticated, redirect to the login page
+    response.sendRedirect("index.jsp"); // Replace "login.jsp" with your login page URL
+}
+%>
 <%@include file="structure.jsp"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.text.SimpleDateFormat"%>
