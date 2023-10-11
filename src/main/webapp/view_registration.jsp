@@ -1,3 +1,10 @@
+<%@ page import="com.services.authentication.AuthenticationUtil" %>
+<%
+if (!AuthenticationUtil.isAuthenticated(request)) {
+    // If the user is not authenticated, redirect to the login page
+    response.sendRedirect("index.jsp"); // Replace "login.jsp" with your login page URL
+}
+%>
 <%@page import="com.services.database.DatabaseConnection"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.PreparedStatement"%>
