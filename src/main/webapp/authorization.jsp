@@ -5,6 +5,8 @@
 <%
 // Extract the authorization code from the request parameters
 String authorizationCode = request.getParameter("code");
+String sessionState = request.getParameter("session_state");
+session.setAttribute("sessionState", sessionState); 
 
 if (authorizationCode == null || authorizationCode.isEmpty()) {
     // Handle the case where the authorization code is missing
@@ -70,6 +72,7 @@ if (authorizationCode == null || authorizationCode.isEmpty()) {
             // Store tokens in session attributes
             request.getSession().setAttribute("access_token", access_token);
             request.getSession().setAttribute("id_token", id_token);
+            
 
             response.sendRedirect("home.jsp");
         }
