@@ -74,13 +74,71 @@ if (request.getParameter("submit") != null) {
 <!doctype>
 <html>
 <head>
+
+<style>
+   
+    #service {
+        text-align: center;
+        padding: 50px;
+         font-family: Arial;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    #reservation-form {
+        max-width: 600px;
+        margin: 0 auto;
+        margin-bottom:20px;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #d9534f;
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #c9302c;
+    }
+
+    #date-error {
+        color: red;
+    }
+</style>
+
     
 </head>
 <body>
         		<section id="service">
 
 
-	           <h2>Vehicle Service Reservation</h2>
+	         
     <form id="reservation-form" method="post" action="">
     
      <input type="hidden" id="username" name="username" value="<%= username %>">

@@ -9,7 +9,6 @@ if (!AuthenticationUtil.isAuthenticated(request)) {
 <%@ page import="java.sql.*" %>
 <%@ include file="structure.jsp" %>
 
-<h4>Upcoming Reservations</h4>
 
 <%
 DatabaseConnection dbConnection = new DatabaseConnection(); // Create a DatabaseConnection object
@@ -44,6 +43,53 @@ try {
 
     if (resultSet.next()) {
 %>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    h4 {
+        color: #333;
+    }
+
+    table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #333;
+        color: #fff;
+    }
+
+    button {
+        background-color: #d9534f;
+        color: white;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    button:hover {
+        background-color: #c9302c;
+    }
+</style>
+
     <table  border="1">
         <thead>
             <tr>
@@ -84,7 +130,7 @@ try {
 <%
     } else {
 %>
-        <p>No upcoming reservations found.</p>
+       <p style="color: white; text-align: center;">No Upcoming Reservations found.</p>
 <%
     }
     resultSet.close();

@@ -12,7 +12,7 @@ if (!AuthenticationUtil.isAuthenticated(request)) {
 <%@page import="java.sql.SQLException"%>
 <%@include file="structure.jsp"%>
 
-<h4>All Reservations</h4>
+
 
 <%
 try {
@@ -25,6 +25,41 @@ try {
 
     if (rs.next()) {
 %>
+<style>
+    body {
+        font-family: Arial;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        
+    }
+
+    h4 {
+        color: #333;
+    }
+
+    table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #333;
+        color: #fff;
+    }
+    
+</style>
+
 <table>
     <thead>
         <tr>
@@ -35,7 +70,7 @@ try {
             <th>Vehicle Number</th>
             <th>Mileage</th>
             <th>Message</th>
-            <th></th>
+            
         </tr>
     </thead>
     <tbody>
@@ -59,7 +94,8 @@ try {
 <%
     } else {
 %>
-<p>No reservations found.</p>
+<p style="color: white; text-align: center;">No reservations found.</p>
+
 <%
     }
     rs.close(); // Close the ResultSet.

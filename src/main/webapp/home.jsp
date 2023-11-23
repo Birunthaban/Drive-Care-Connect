@@ -63,65 +63,37 @@ String introspectionEndpoint = props.getProperty("oauth.introspection_endpoint")
 <!doctype>
 <html>
 <head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 0;
-    }
 
-    h3 {
-        color: #007BFF;
-        text-align: center;
-    }
+<style>
 
     .profile-info {
-        max-width: 400px;
-        margin: 0 auto;
-        background-color: #fff;
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: white;
         padding: 20px;
-         margin: 50px auto; 
-        border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        text-align: center;
+        border-radius: 5px;
     }
 
-    .text-capitalize {
-        text-transform: capitalize;
-        font-weight: bold;
-        font-size: 18px;
-    }
-
-    .mb-0 {
-        margin-bottom: 10px;
-    }
-
-    h4 {
-        font-size: 16px;
-        color: #333;
-    }
-     .info-pair {
-        margin: 10px 0;
+    .info-pair {
+        margin-bottom: 15px;
     }
 
     .info-label {
-        text-transform: uppercase;
         font-weight: bold;
-        font-size: 16px;
-        color: #007BFF;
+        margin-bottom: 5px;
     }
 
     .info-value {
-        font-size: 16px;
-        color: #333;
+        color: #d9534f;
     }
 </style>
+
 
 </head>
 <body>
 <div class="profile-info">
-    <h2>Profile</h2>
+    <h2 align="center">Profile</h2>
 
     <div class="info-pair">
         <p class="info-label">USERNAME</p>
